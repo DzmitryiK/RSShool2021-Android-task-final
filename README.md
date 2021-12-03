@@ -4,4 +4,4 @@ Final task for RSSchool Android 2021
 # Translate App
 Application, that allows to translate text via API and store your favourite translations in local database
 
-![Screenshot](/images/screenshot.jpg)
+![Screenshot](images/screenshot.jpg)
