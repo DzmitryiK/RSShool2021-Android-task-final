@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/TranslatorFragent">
+
+    <fragment
+        android:id="@+id/TranslatorFragent"
+        android:name="com.rsschool.translateapp.presentation.ui.TranslatorFragment"
+        android:label="@string/translator_fragment_label"
+        tools:layout="@layout/fragment_translator">
+
+        <action
+            android:id="@+id/action_Translator_to_Bookamrks"
+            app:destination="@id/BookmarksFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/BookmarksFragment"
+        android:name="com.rsschool.translateapp.presentation.ui.BookmarksFragment"
+        android:label="@string/bookmarks_fragment_label"
+        tools:layout="@layout/fragment_bookmarks">
+
+        <action
+            android:id="@+id/action_Bookmarks_to_Translator"
+            app:destination="@id/TranslatorFragent" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.rsschool.translateapp.presentation.ui.SettingsFragment"
+        android:label="@string/settings_fragment_label" >
+        <action
+            android:id="@+id/action_Settings_to_About"
+            app:destination="@id/aboutFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <action android:id="@+id/open_settings_fragment"
+        app:destination="@id/settingsFragment"/>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.rsschool.translateapp.presentation.ui.AboutFragment"
+        android:label="@string/about_fragment_label"
+        tools:layout="@layout/fragment_about" />
+</navigation>

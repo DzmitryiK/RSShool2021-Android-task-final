@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.TranslatorFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sourceBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/cardBackgroundColor"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:id="@+id/selectedLangTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/default_side_margin"
+            android:layout_marginEnd="@dimen/default_side_margin"
+            android:textAllCaps="true"
+            tools:text="Selected language"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLay_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/default_side_margin"
+            android:layout_marginEnd="@dimen/default_side_margin"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:layout_constraintBottom_toTopOf="@id/guideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectedLangTextView"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInput_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:imeOptions="actionNext"
+                android:inputType="textCapSentences|textMultiLine"
+                android:textSize="20sp"
+                android:hint="@string/textInputDefaultHint"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <Spinner
+            android:id="@+id/srcLangSpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_side_margin"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/swapLangsButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline1"
+            tools:listitem="@android:layout/simple_list_item_1"/>
+
+        <ImageButton
+            android:id="@+id/swapLangsButton"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_swap_horiz_24"
+            android:background="?android:selectableItemBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline1" />
+
+        <Spinner
+            android:id="@+id/resLangSpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="@dimen/default_side_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/swapLangsButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline1"
+            tools:listitem="@android:layout/simple_list_item_1" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.43" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/resProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/errorLay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/errorImageView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_baseline_error_outline_24"/>
+        <TextView
+            android:id="@+id/errorText"
+            android:textColor="@color/errorRedColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            tools:text="Error message"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/resBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/cardBackgroundColor"
+        android:elevation="2dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="@dimen/default_side_margin"
+        android:layout_marginEnd="@dimen/default_side_margin"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/resultLangTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/bookmarkButton"
+            app:layout_constraintTop_toTopOf="@id/shareButton"
+            app:layout_constraintBottom_toTopOf="@id/resultScrollView"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textAllCaps="true"
+            tools:text="Result language"/>
+
+        <ImageButton
+            android:id="@+id/shareButton"
+            android:layout_width="@dimen/result_buttons_size"
+            android:layout_height="@dimen/result_buttons_size"
+            android:layout_marginTop="@dimen/result_buttons_top_margin"
+            android:layout_marginEnd="@dimen/result_buttons_end_margin"
+            android:src="@drawable/ic_baseline_share_24"
+            android:background="?android:selectableItemBackground"
+            app:layout_constraintEnd_toStartOf="@id/clipboardButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/resultLangTextView"/>
+
+        <ImageButton
+            android:id="@+id/clipboardButton"
+            android:layout_width="@dimen/result_buttons_size"
+            android:layout_height="@dimen/result_buttons_size"
+            android:layout_marginTop="@dimen/result_buttons_top_margin"
+            android:layout_marginEnd="@dimen/result_buttons_end_margin"
+            android:src="@drawable/ic_baseline_content_copy_24"
+            android:background="?android:selectableItemBackground"
+            app:layout_constraintEnd_toStartOf="@id/bookmarkButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/shareButton"/>
+
+        <ImageButton
+            android:id="@+id/bookmarkButton"
+            android:layout_width="@dimen/result_buttons_size"
+            android:layout_height="@dimen/result_buttons_size"
+            android:layout_marginTop="@dimen/result_buttons_top_margin"
+            android:src="@drawable/ic_baseline_star_border_24"
+            android:background="?android:selectableItemBackground"
+            app:layout_constraintEnd_toEndOf="@id/resultScrollView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/clipboardButton"/>
+
+        <ScrollView
+            android:id="@+id/resultScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/resultLangTextView">
+            <TextView
+                android:id="@+id/resultTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                tools:text="Translation result"
+                android:scrollbars = "vertical"
+                />
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

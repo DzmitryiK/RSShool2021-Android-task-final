@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ListPreference
+        android:key="sharePref"
+        android:title="Shared text format"
+        android:entries="@array/share_options"
+        android:entryValues="@array/share_options"
+        android:defaultValue="@string/share_option_default"
+        app:useSimpleSummaryProvider="true"
+        app:iconSpaceReserved="false"/>
+    <Preference
+        android:key="about"
+        android:title="About"
+        app:iconSpaceReserved="false"/>
+</androidx.preference.PreferenceScreen>
